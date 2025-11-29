@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#2 template | Blog details</title>
+</head>
+<body>
+    <h1 style='color:red;'>Types of filters in templates</h1>
+
+    <h2>Text filter</h2>
+    {% comment %} text filter {% endcomment %}
+    <p><code>Title (normal)</code></p>
+    <p><b>Title (normal):</b> {{ post.title }}</p>
+
+    {% comment %} Upper case {% endcomment %}
+    <p><code>variable name|upper</code></p>
+    <p><b>Title (Upper case):</b> {{ post.title|upper }}</p>
+
+    {% comment %} Lower case {% endcomment %}
+    <p><code>variable name|lower</code></p>
+    <p><b>Title (Lower case):</b> {{ post.title|lower }}</p>
+
+    {% comment %} Capitalization {% endcomment %}
+    <p><code>variable name|capfirst</code></p>
+    <p><b>Title (Capitalized):</b> {{ post.title|capfirst }}</p>
+
+    {% comment %} Title case {% endcomment %}
+    <p><code>variable name|title</code></p>
+    <p><b>Title (Title case):</b> {{ post.title|title }}</p>
+
+    {% comment %} Truncate characters {% endcomment %}
+    <p><code>variable name|truncatechars</code></p>
+    <p><b>Title (Truncate characters):</b> {{ post.title|truncatechars:20 }}</p>
+
+    {% comment %} Truncate words {% endcomment %}
+    <p><code>variable name|truncatewords</code></p>
+    <p><b>Title (Truncate words):</b> {{ post.title|truncatewords:2 }}</p>
+
+    {% comment %} Truncate words {% endcomment %}
+    <p><code>variable name|linebreaks</code></p>
+    <p><b>Title (Linebreak):</b> {{ post.title|linebreaks }}</p>
+    
+    <hr>
+    
+    <h2>Number filters</h2>
+    {% comment %} Original price {% endcomment %}
+    <p><code>Price (Original)</code></p>
+    <p><b>Price (Original):</b> {{ post.price }}</p>
+    
+    {% comment %} Addition {% endcomment %}
+    <p><code>variable|add: 5</code></p>
+    <p><b>Price (+5):</b> {{ post.price|add:5 }}</p>
+    
+    {% comment %} Subtract {% endcomment %}
+    <p><code>variable|add: -5</code></p>
+    <p><b>Price (-5):</b> {{ post.price|add:-5 }}</p>
+    
+    {% comment %} Division {% endcomment %}
+    <i>Division works on if else logic</i>
+    <p><code>Can't add full Code: price.number|divisibleby:2</code></p>
+    {% if post.number|divisibleby:2 %}
+    <p>Number is Even</p>
+    {% else %}
+    <p>Number is Odd</p>
+    {% endif %}
+    
+    <hr>
+
+    <h2>List filters</h2>
+    <i>List filters are more or less very similar to basic python list methods</i>
+    {% comment %} Original list {% endcomment %}
+    <p><code>List (Original)</code></p>
+    <p>List (Original): {{ post.tags }}</p>
+
+    {% comment %} First item {% endcomment %}
+    <p><code>list_variable|first</code></p>
+    <p>List (first item): {{ post.tags|first }}</p>
+
+    {% comment %} Last item {% endcomment %}
+    <p><code>list_variable|last</code></p>
+    <p>List (last item): {{ post.tags|last }}</p>
+
+    {% comment %} length of list {% endcomment %}
+    <p><code>list_variable|length</code></p>
+    <p>List (length): {{ post.tags|length }}</p>
+
+    {% comment %} slice of list {% endcomment %}
+    <p><code>list_variable|slice:'0:2'</code></p>
+    <p>List (slice): {{ post.tags|slice:':2' }}</p>
+
+    {% comment %} join list items {% endcomment %}
+    <p><code>list_variable|join:' ,'</code></p>
+    <p>List (join): {{ post.tags|join:' ,' }}</p>
+
+    <hr>
+
+    <h2>Yes | No</h2>
+    {% comment %} Original author {% endcomment %}
+    <p><code>Author (Original)</code></p>
+    <p>Author (Original): {{ post.author }}</p>
+
+    {% comment %} Is author {% endcomment %}
+    <p><code>variable|yesno:'true, false, none'</code></p>
+    <p>Author: {{ post.author|yesno:'yes, no, maybe' }}</p>
+
+    <hr>
+
+    <h2>Pluralization</h2>
+    {% comment %} Original comment count {% endcomment %}
+    <p><code>comment count (Original)</code></p>
+    <p>Comment count 1 (Original): {{ post.comment_count_1 }}</p>
+    <p>Comment count 6 (Original): {{ post.comment_count_6 }}</p>
+
+    {% comment %} Pluralize {% endcomment %}
+    <p><code>variablename|pluralize</code></p>
+    <p>Comment count 1: comment{{ post.comment_count_1|pluralize }}</p>
+    <p>Comment count 6: comment{{ post.comment_count_6|pluralize }}</p>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Home | Chai Aur Django
+    </title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    {% tailwind_css %}
+</head>
+<body>
+
+    <header>
+        <h1 class='bg-blue-500'>Welcome to Chai Aur Django</h1>
+        <p>A warm cup of chai and powerful Django learning — the perfect combo.</p>
+    </header>
+
+    <section class="container">
+
+        <div class="card">
+            <h2>About This App</h2>
+            <p>Learn what Chai Aur Django is all about and how it can help you grow as a developer.</p>
+            <a href="/about/">Read More</a>
+        </div>
+
+        <div class="card">
+            <h2>Contact Us</h2>
+            <p>Have feedback or questions? Reach out — we’d love to hear from you!</p>
+            <a href="/contact/">Get in Touch</a>
+        </div>
+
+        <div class="card">
+            <h2>Start Exploring</h2>
+            <p>Dive deeper into Django tutorials and features with simple examples.</p>
+            <a href="#">Explore Now</a>
+        </div>
+
+    </section>
+
+</body>
+</html>

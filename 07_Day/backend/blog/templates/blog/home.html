@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template basic | home page</title>
+</head>
+<body>
+    <!-- A normal html comment is also valid -->
+    {# This is one line comment for template #}
+    {% comment %}
+    This is second type of comment for template and it is multiline in nature
+    {% endcomment %}
+
+    <h1 style='color:red;'>WELCOME TO PROJECT TEMPLATES</h1>
+
+
+    {% comment %}Single variable: {{ variable name }}{% endcomment %}
+    <h2>Single variable</h2>
+    <p>This is the name: {{ name }}</p>
+    <p>This is the age: {{ age }}</p>
+    
+    {% comment %} List access {% endcomment %}
+    <h2>List access</h2>
+    <p>All Skills: {{ skill }}</p>
+    <p>First Skill: {{ skill.0 }}</p>
+    
+    {% comment %} Object attribute access {% endcomment %}
+    <h2>Object attribute access</h2>
+    <p>User name: {{ user.name }}</p>
+    <p>User age: {{ user.age }}</p>
+    
+    {% comment %} Dictionary properties access {% endcomment %}
+    <h2>Dictionary properties access</h2>
+    <p>Blog tittle: {{ blog.title }}</p>
+    <p>Blog content: {{ blog.content }}</p>
+    <p>Blog content: {{ blog.content | safe}}</p>
+    <p>Blog created: {{ blog.created_at }}</p>
+    
+    {% comment %} Nested dictionary properties {% endcomment %}
+    <h2>Nested dictionary properties</h2>
+    <p>Author name: {{ blog.author.name }}</p>
+    
+    {% comment %} Default value {% endcomment %}
+    <h2>Default values</h2>
+    <p>Default empty value: {{ empty_value | default:'No value provided' }}</p>
+    <p>Default empty value when none: {{ empty_value | default_if_none:"No data" }}</p>
+</body>
+</html>

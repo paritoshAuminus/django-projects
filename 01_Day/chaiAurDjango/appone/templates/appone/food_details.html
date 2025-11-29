@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Food Details
+{% endblock %}
+
+{% block content %}
+
+<div class="max-w-4xl mx-auto p-6">
+
+    <!-- Image Section -->
+    <div class="w-full h-72 md:h-96 rounded-xl overflow-hidden shadow-md">
+        <img 
+            src="#" 
+            alt="Food Image" 
+            class="w-full h-full object-cover"
+        >
+    </div>
+
+    <!-- Food Title -->
+    <h1 class="text-4xl font-bold mt-6 text-gray-800">
+        Food Name
+    </h1>
+
+    <!-- Type & Price -->
+    <div class="flex items-center gap-4 mt-3 text-gray-600">
+        <span class="px-3 py-1 bg-gray-200 rounded-full text-sm">
+            Cuisine Type
+        </span>
+
+        <span class="text-xl font-semibold">
+            $0.00
+        </span>
+    </div>
+
+    <!-- Description -->
+    <div class="mt-6 text-gray-700 leading-relaxed">
+        <p>
+            Food description goes here. This is where detailed text will be displayed, 
+            describing the dish, ingredients, or any extra information.
+        </p>
+    </div>
+
+    <!-- Buttons -->
+    <div class="mt-8 flex gap-4">
+
+        <a href="#" 
+            class="px-6 py-3 bg-gray-800 text-white rounded-lg font-medium 
+                   hover:bg-gray-900 transition">
+            Back
+        </a>
+
+        <button 
+            class="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium 
+                   hover:bg-blue-700 transition">
+            Add to Cart
+        </button>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        Page Title
+        {% endblock %}
+    </title>
+</head>
+<body>
+    {% block heading %}
+    <h1 style='color: red;'>Some page</h1>
+    {% endblock %}
+    <hr>
+    {% block content %}
+    <p>This is some page. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, laboriosam. Excepturi cupiditate sit mollitia eum non sint, quis dignissimos molestias.</p>
+    {% endblock %}
+</body>
+</html>
