@@ -14,3 +14,12 @@ class RegistrationForm(UserCreationForm):
 
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError('Email already exists')
+        return email
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']   # <-- manually assign email
+
+        if commit:
+            user.save()
+        return user

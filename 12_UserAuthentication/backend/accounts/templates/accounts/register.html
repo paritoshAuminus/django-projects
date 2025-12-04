@@ -1,0 +1,37 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+<div class="bg-white p-8 shadow-md rounded-lg w-full max-w-md">
+    <h2 class="text-2xl font-semibold text-center mb-6 text-indigo-600">Register</h2>
+
+    <form method="post" action="{% url 'register' %}" class="space-y-4">
+        {% csrf_token %}
+        <div class="space-y-3">
+            <div>
+            <label class="block mb-1 font-medium">Username</label>
+            <input type="text" name="username" placeholder='Username'
+                   class="w-full border rounded p-2 focus:outline-none focus:ring focus:ring-indigo-300">
+        </div>
+        <div>
+            <label class="block mb-1 font-medium">Email</label>
+            <input type="email" name="email" placeholder='Enter Email'
+                   class="w-full border rounded p-2 focus:outline-none focus:ring focus:ring-indigo-300">
+        </div>
+        <div>
+            <label class="block mb-1 font-medium">Password</label>
+            <input type="password" name="password" placeholder='Enter Password'
+                   class="w-full border rounded p-2 focus:outline-none focus:ring focus:ring-indigo-300">
+        </div>
+        <div>
+            <label class="block mb-1 font-medium">Password</label>
+            <input type="password" name="password" placeholder='Confirm Password'
+                   class="w-full border rounded p-2 focus:outline-none focus:ring focus:ring-indigo-300">
+        </div>
+        </div>
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        <button type="submit"
+                class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition">
+            Register
+        </button>
+    </form>
+</div>
+{% endblock %}
