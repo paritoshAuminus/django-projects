@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School management</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <header>
+        <h2>School Manager</h2>
+        <nav>
+            <a href="{% url "dashboard_view" %}">Home</a>
+        </nav>
+    </header>
+    {% block content %}{% endblock %}
+    <footer>
+        <div>Created By Paritosh. <span>Github: paritoshAuminus</span></div>
+        <div>&copy;2025</div>
+    </footer>
+</body>
+</html>

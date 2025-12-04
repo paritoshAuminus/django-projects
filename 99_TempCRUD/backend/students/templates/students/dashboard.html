@@ -1,0 +1,25 @@
+{% extends "students/base.html" %}
+{% block content %}
+{% if class_name %}
+<table>
+    <thead>
+        <tr>
+            <th>Full name</th>
+            <th>Name</th>
+            <th>Section</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for class_n in class_name %}
+        <tr>
+            <td><a href='#'></a>{{ class_n.get_name_display }}</td>
+            <td><a href='#'></a>{{ class_n.name }}</td>
+            <td>{{ class_n.section }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div>No classes available yet</div>
+{% endif %}
+{% endblock %}
