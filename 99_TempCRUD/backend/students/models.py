@@ -7,15 +7,13 @@ class Class_model(models.Model):
         ('I', 'First'),
         ('II', 'Second'),
         ('III', 'Third'),
-        ('IV', 'Fourth'),
+        ('IV', 'Four'),
         ('V', 'Fifth'),
         ('VI', 'Sixth'),
         ('VII', 'Seventh'),
         ('VIII', 'Eighth'),
         ('IX', 'Ninth'),
         ('X', 'Tenth'),
-        ('XI', 'Eleventh'),
-        ('XII', 'Twelth'),
     ]
 
     section_choices = [
@@ -23,6 +21,7 @@ class Class_model(models.Model):
         ('A', 'A'),
         ('B', 'B'),
         ('C', 'C'),
+        ('D', 'D'),
     ]
 
     name = models.CharField(max_length=4, choices=class_choices)
@@ -30,14 +29,16 @@ class Class_model(models.Model):
 
     @property
     def full_name(self):
-        return self.get_name_display()
+        return self.name
 
-
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return f'{self.name} - {self.section}'
     
     class Meta:
         unique_together = ('name', 'section')
+        verbose_name = 'Class'
+        verbose_name_plural = 'Classes'
+
 
 class Student(models.Model):
     first_name = models.CharField(max_length=50)

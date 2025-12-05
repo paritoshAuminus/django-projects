@@ -1,0 +1,30 @@
+{% extends "students/base.html" %}
+
+{% block content %}
+<h2>All students in {{ class_obj.full_name }} here</h2>
+{% if students %}
+<table>
+    <thead>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Roll no</th>
+            <th>Father's name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in students %}
+        <tr>
+            <td>{{ s.first_name }}</td>
+            <td>{{ s.last_name }}</td>
+            <td>{{ s.roll_no }}</td>
+            <td>{{ s.father_name }}</td>
+        </tr>
+        {% endfor %}          
+    </tbody>
+</table>
+{% else %}
+<h1>No students in this class yet...</h1>
+{% endif %}
+{% endblock %}
+

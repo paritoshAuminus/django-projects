@@ -1,15 +1,21 @@
 from django.contrib import admin
-from .models import Class_model
+from .models import Student, Class_model
 
 # Register your models here.
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ['first_name', 'last_name', 'father_name', 'class_name', 'roll_no'] 
+    list_display_links = ['first_name']
+
+
+class StudentInline(admin.TabularInline):
+    model = Student
+    extra = 0
+
 @admin.register(Class_model)
-class Class_admin(admin.ModelAdmin):
-    list_display = ['full_name', 'roman', 'section']
-    list_display_links = ['full_name']
+class ClassAdmin(admin.ModelAdmin):
+    list_display = ['name', 'full_name', 'section']
     search_fields = ['name', 'section']
-    ordering = ['name', 'section']
-
-    def roman(self, obj):
-        return obj.name  # raw stored value
-
-    roman.short_description = "Name"
+    list_display_links = ['name']
+    ordering = ['section']
+    inlines = [StudentInline]

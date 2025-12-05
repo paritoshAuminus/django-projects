@@ -1,25 +1,31 @@
 {% extends "students/base.html" %}
 {% block content %}
+<h1 style="text-align:center; color:#2c3e50;">Dashboard</h1>
+
 {% if class_name %}
-<table>
+<table style="width:80%; margin:20px auto; border-collapse:collapse; font-family:Arial, sans-serif;">
     <thead>
-        <tr>
-            <th>Full name</th>
-            <th>Name</th>
-            <th>Section</th>
+        <tr style="background-color:#34495e; color:white; text-align:left;">
+            <th style="padding:10px; border:1px solid #ccc;">Full Name</th>
+            <th style="padding:10px; border:1px solid #ccc;">Class Name</th>
+            <th style="padding:10px; border:1px solid #ccc;">Section</th>
         </tr>
     </thead>
     <tbody>
         {% for class_n in class_name %}
-        <tr>
-            <td><a href='#'></a>{{ class_n.get_name_display }}</td>
-            <td><a href='#'></a>{{ class_n.name }}</td>
-            <td>{{ class_n.section }}</td>
+        <tr style="background-color:{% cycle '#ecf0f1' '#bdc3c7' %};">
+            <td style="padding:8px; border:1px solid #ccc;">
+                <a href="{% url 'class_view' %}" style="text-decoration:none; color:#2980b9; font-weight:bold;">
+                    {{ class_n.get_name_display }}
+                </a>
+            </td>
+            <td style="padding:8px; border:1px solid #ccc;">{{ class_n.name }}</td>
+            <td style="padding:8px; border:1px solid #ccc;">{{ class_n.section }}</td>
         </tr>
-        {% endfor %}
+        {% endfor %}          
     </tbody>
 </table>
 {% else %}
-<div>No classes available yet</div>
+<h2 style="text-align:center; color:#e74c3c;">No classes added yet...</h2>
 {% endif %}
 {% endblock %}

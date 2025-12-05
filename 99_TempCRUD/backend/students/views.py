@@ -1,17 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Class_model, Student
 
-# Dashboard >>> List of all classes
-def dashboard_view(request):
+# Create your views here.
+# List of all classes
+def dashboard(request):
     class_name = Class_model.objects.all()
     return render(request, 'students/dashboard.html', {'class_name': class_name})
 
-# Class view >>> List of all students inside a class
-def class_view(request, pk):
-    students = Student.objects.get(class_name=pk)
-    return render(request, 'students/class_view.html', {'students': students})
+# List of all students inside one class
+def class_view(request):
+    class_obj = get_object_or_404(Class_model)    # Get one class students not all of em
+    students = Student.objects.filter(class_name = class_obj)
+    return render(request, 'students/student_list.html', {'students': students, 'class_obj': class_obj})
 
-# Student view >>> Information about one student
-def student_view(request, pk):
-    student = Student.objects.get(pk = pk)
-    return render(request, 'students/student_view.html', {'student': student})
+# One student
+def sutdent_view(request):
+    student = Student.objects.all()     # Get one student not all students
+    return render(request, 'students/student.html', {'student': student})
