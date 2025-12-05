@@ -1,30 +1,45 @@
 {% extends "students/base.html" %}
 
 {% block content %}
-<h2>All students in {{ class_obj.full_name }} here</h2>
+<h2 style="text-align:center; color:#2c3e50; margin-top:20px;">
+    All students in {{ class_obj.get_name_display }} {{ class_obj.section }}
+</h2>
+
 {% if students %}
-<table>
+<table style="width:80%; margin:20px auto; border-collapse:collapse; font-family:Arial, sans-serif;">
     <thead>
-        <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Roll no</th>
-            <th>Father's name</th>
+        <tr style="background-color:#34495e; color:white; text-align:left;">
+            <th style="padding:10px; border:1px solid #ccc;">First name</th>
+            <th style="padding:10px; border:1px solid #ccc;">Last name</th>
+            <th style="padding:10px; border:1px solid #ccc;">Roll no</th>
+            <th style="padding:10px; border:1px solid #ccc;">Father's name</th>
         </tr>
     </thead>
     <tbody>
         {% for s in students %}
-        <tr>
-            <td>{{ s.first_name }}</td>
-            <td>{{ s.last_name }}</td>
-            <td>{{ s.roll_no }}</td>
-            <td>{{ s.father_name }}</td>
+        <tr style="background-color:{% cycle '#ecf0f1' '#bdc3c7' %};">
+            <td style="padding:8px; border:1px solid #ccc;">
+                <a href="{% url "sutdent_view" s.id %}">
+                    {{ s.first_name }}
+                </a>
+            </td>
+            <td style="padding:8px; border:1px solid #ccc;">{{ s.last_name }}</td>
+            <td style="padding:8px; border:1px solid #ccc;">{{ s.roll_no }}</td>
+            <td style="padding:8px; border:1px solid #ccc;">{{ s.father_name }}</td>
         </tr>
-        {% endfor %}          
+        {% endfor %}
     </tbody>
 </table>
 {% else %}
-<h1>No students in this class yet...</h1>
+<h2 style="text-align:center; color:#e74c3c;">No students in this class yet...</h2>
+<a href="{% url "add_student" %}">Add new student</a>
 {% endif %}
-{% endblock %}
 
+<div style="text-align:center; margin-top:20px;">
+    <a href="{% url 'dashboard' %}" 
+       style="background-color:#2980b9; padding:10px 20px; text-decoration:none; color:white; border-radius:5px;">
+       Back to Dashboard
+    </a>
+</div>
+
+{% endblock %}

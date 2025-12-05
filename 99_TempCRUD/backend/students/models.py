@@ -40,12 +40,32 @@ class Class_model(models.Model):
         verbose_name_plural = 'Classes'
 
 
+
+class Subjects(models.Model):
+    subject_choices = [
+        (None, 'Select Subject'),
+        ('MATH', 'Mathematics'),
+        ('SCI', 'Science'),
+        ('ENG', 'English'),
+        ('SST', 'Social Studies'),
+        ('BIO', 'Biology'),
+        ('PHY', 'Physics'),
+        ('CHEM', 'Chemistry'),
+    ]
+
+    name = models.CharField(max_length=4, choices=subject_choices)
+
+    def __str__(self):
+        return self.name
+
+
 class Student(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     father_name = models.CharField(max_length=50)
     class_name = models.ForeignKey(Class_model, on_delete=models.CASCADE, related_name='student')
     roll_no = models.PositiveIntegerField()
+    subjects = models.ManyToManyField(Subjects, verbose_name=("subjects"), related_name='student')
 
     def __str__(self):
         return self.first_name
