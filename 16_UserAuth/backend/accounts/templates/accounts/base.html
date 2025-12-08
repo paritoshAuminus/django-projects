@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth demo</title>
+</head>
+<body>
+    {% comment %} Messages display {% endcomment %}
+    {% if messages %}
+    {% for message in messages %}
+    <ul>
+        <li>{{ message }}</li>
+    </ul>
+    {% endfor %}
+    {% endif %}
+
+    {% comment %} Login/logout/register {% endcomment %}
+    {% if user.is_authenticated %}
+    Logged in as {{ user.username }} | <a href="{% url "logout" %}">Logout</a>
+    {% else %}
+    Login | <a href="register">Regster</a> | <a href="login">Login</a>
+    {% endif %}
+
+    <hr>
+
+    {% block content %}{% endblock %}
+</body>
+</html>
