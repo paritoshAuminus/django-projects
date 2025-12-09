@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination in Django</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <div class="max-w-2xl mx-auto py-10">
+
+        <h1 class="text-3xl font-bold text-center mb-6">Blog Posts</h1>
+
+        <ul class="space-y-4">
+            {% for post in page_obj %}
+            <li class="p-5 bg-white shadow-md rounded-lg">
+                <p class="text-lg font-semibold">Title: {{ post.title }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Pagination -->
+        <div class="flex justify-center items-center gap-2 mt-8">
+
+            {% if page_obj.has_previous %}
+            <a href="?page=1"
+               class="px-3 py-1 border rounded hover:bg-gray-200">First</a>
+
+            <a href="?page={{ page_obj.previous_page_number }}"
+               class="px-3 py-1 border rounded hover:bg-gray-200">Previous</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <span class="px-3 py-1 bg-blue-600 text-white rounded">{{ num }}</span>
+                {% else %}
+                <a href="?page={{ num }}"
+                   class="px-3 py-1 border rounded hover:bg-gray-200">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}"
+               class="px-3 py-1 border rounded hover:bg-gray-200">Next</a>
+
+            <a href="?page={{ page_obj.paginator.num_pages }}"
+               class="px-3 py-1 border rounded hover:bg-gray-200">Last</a>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>
