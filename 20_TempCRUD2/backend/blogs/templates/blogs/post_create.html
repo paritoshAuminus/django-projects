@@ -1,0 +1,8 @@
+{% extends "blogs/base.html" %}
+{% block content %}
+<form method='post'>
+    {% csrf_token %}
+    <p><input type="text" value="{{ post.title }}"></p>
+    <p><input type="text" value="{{ post.content }}"></p>
+</form>
+{% endblock %}
