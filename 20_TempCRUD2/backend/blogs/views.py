@@ -25,4 +25,4 @@ class PostUpdateView(UpdateView):
 class PostDeleteView(DeleteView):
     model = Post
     template_name = 'blogs/post_delete.html'
-    reverse_lazy('post_list')
+    success_url = reverse_lazy('post_list')
