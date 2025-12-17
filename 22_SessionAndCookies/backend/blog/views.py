@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# Create your views here.
+# Create your sessions views here.
 def set_session(request):
     request.session['username'] = 'paritosh'
     request.session['course'] = 'Django full course'
@@ -24,3 +24,22 @@ def delete_session(request):
     # Deleting all sessions with one command
     request.session.flush()
     return HttpResponse('All session data deleted successfully.')
+
+
+# Store all your cookies views here
+def set_cookies(request):
+    response = HttpResponse('Cookies created successfully!')
+    response.set_cookie('theme', 'dark', max_age=60*60*24)      # max_age=One_day
+    response.set_cookie('color', 'magenta', max_age=60*60*24)
+    return response
+
+def get_cookies(request):
+    theme = request.COOKIES.get('theme', 'No theme set')
+    color = request.COOKIES.get('color', 'No color set')
+    return HttpResponse(f'The theme is {theme} and the color is {color}')
+
+def delete_cookies(request):
+    response = HttpResponse('Cookies deleted succesfully.')
+    response.delete_cookie('theme')
+    response.delete_cookie('color')
+    return response
