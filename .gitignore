@@ -6,7 +6,8 @@ env/
 # Python cache
 __pycache__/
 *.pyc
-my_cache
+*.djcache
+my_cache/
 cache
 
 # Django stuff

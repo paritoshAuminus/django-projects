@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profiles</title>
+    <title>Videos</title>
 </head>
 <body>
-    <h1>User Profile List</h1>
-    {% if profiles %}
+    <h1>Videos information</h1>
+    {% if blogs %}
     <table border="1" cellpadding="8">
         <tr>
             <th>Name</th>
-            <th>Email</th>
-            <th>Friends</th>
+            <th>content</th>
         </tr>
-        {% for profile in profiles %}
+        {% for blog in blogs %}
         <tr>
-            <td>{{ profile.name }}</td>
-            <td>{{ profile.email }}</td>
-            <td>{{ profile.friends }}</td>
+            <td>{{ blog.name }}</td>
+            <td>{{ blog.content }}</td>
         </tr>
         {% endfor %}
     </table>
     {% else %}
-    <h2>No profiles found...</h2>
+    <h2>No blogs available yet</h2>
     {% endif %}
 </body>
 </html>

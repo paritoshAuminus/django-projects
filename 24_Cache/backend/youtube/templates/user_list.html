@@ -7,12 +7,17 @@
 </head>
 <body>
     <h1>Youtube User List</h1>
+    {% if users %}
     <table border="1" cellpadding="8">
         <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Subscribers</th>
         </tr>
+        {% comment %} This entire section is now cached {% endcomment %}
+        {% load cache %}            {% comment %} Loading cache {% endcomment %}
+        {% cache 30 users_cache %}  {% comment %} cache timeout cache_name {% endcomment %}
+
         {% for user in users %}
         <tr>
             <td>{{ user.name }}</td>
@@ -20,6 +25,11 @@
             <td>{{ user.subscribers }}</td>
         </tr>
         {% endfor %}
+
+        {% endcache %}
     </table>
+    {% else %}
+    <h2>No videos yet...</h2>
+    {% endif %}
 </body>
 </html>

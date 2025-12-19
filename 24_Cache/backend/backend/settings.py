@@ -118,10 +118,18 @@ CACHES = {
     },
     'filebase': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': BASE_DIR/'my_cache',    # specify cache directory
-        'TIMEOUT': 300,                     # cache timeout in seconds
+        'LOCATION': BASE_DIR / 'my_cache' / 'filebase',
+        'TIMEOUT': 300,
         'OPTIONS': {
-            'MAX_ENTRIES': 1000             # maximum entries in the cache
+            'MAX_ENTRIES': 1000,
         },
-    } 
+    },
+    'perviewFilebase': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': BASE_DIR / 'my_cache' / 'perview',
+    },
+    'databaseCache': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table', # <----- name of table in the db file
+    },
 }

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import YoutubeUser, UserProfile
+from .models import YoutubeUser, UserProfile, VideoCount, Blog
 from django.core.cache import cache
 from django.contrib import messages
 
@@ -17,3 +17,11 @@ class YoutubeAdmin(admin.ModelAdmin):
 @admin.register(UserProfile)
 class UserAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'friends']
+
+@admin.register(VideoCount)
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ['name', 'views']
+
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ['name', 'content']
