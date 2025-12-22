@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import ProductCard from '../components/ProductCard'
+// import ProductCard from '../components/ProductCard'
 import { BASE_URL } from '../api/api'
+import { ProductCard } from '../components'
 
 function Products() {
   const [products, setProducts] = useState([])

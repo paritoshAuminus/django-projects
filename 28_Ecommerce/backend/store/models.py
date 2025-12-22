@@ -48,3 +48,17 @@ class OrderItem(models.Model):
     def __str__(self):
         return f'{self.quantity} x {self.product.name}'
 
+class Cart(models.Model):
+    user = models.ForeignKey(User, related_name='cart', null=True, blank=True, on_delete=models.CASCADE)    
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = ("Cart")
+        verbose_name_plural = ("Carts")
+
+    def __str__(self):
+        return f'Cart {self.id} for {self.user}'
+
+    @property
+    def total(self):
+        return sum(item.subtotal for item in self.items.all())

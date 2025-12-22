@@ -10,7 +10,14 @@ def get_products(request):
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-
+@api_view(['GET'])
+def get_product(request, pk):
+    try:
+        product = Product.objects.get(id=pk)
+        serializer = ProductSerializer(product, context={'request': request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response({'error': 'Product not found'}, status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['GET'])
 def get_categories(request):
