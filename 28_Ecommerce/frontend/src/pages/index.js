@@ -1,3 +1,4 @@
+import Cartpage from './Cartpage'
 import Products from './Products'
 
-export { Products }
+export { Products, Cartpage }

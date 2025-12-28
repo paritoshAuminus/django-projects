@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { BASE_URL } from '../api/api'
+import { useCart } from '../context/CartContext'
 
 function ProductDetails() {
 
@@ -10,24 +11,25 @@ function ProductDetails() {
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const { addToCart } = useCart()
 
-  useEffect(() => {
-    fetch(`${BASE_URL}/api/products/${id}`)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Failed to fetch product.')
-        }
-        return res.json()
-      })
-      .then(data => (
-        setProduct(data),
-        setLoading(false)
-      ))
-      .catch(error => (
-        setError(error.message),
-        setLoading(false)
-      ))
-  }, [id, BASE_URL])
+    useEffect(() => {
+      fetch(`${BASE_URL}/api/products/${id}`)
+        .then(res => {
+          if (!res.ok) {
+            throw new Error('Failed to fetch product.')
+          }
+          return res.json()
+        })
+        .then(data => (
+          setProduct(data),
+          setLoading(false)
+        ))
+        .catch(error => (
+          setError(error.message),
+          setLoading(false)
+        ))
+    }, [id, BASE_URL])
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>
@@ -76,7 +78,7 @@ function ProductDetails() {
 
               {/* Action Buttons */}
               <div className="flex gap-4">
-                <button className="flex-1 bg-gray-800 text-white py-3 rounded-lg font-medium hover:bg-gray-900 transition">
+                <button onClick={() => addToCart(product)} className="flex-1 bg-gray-800 text-white py-3 rounded-lg font-medium hover:bg-gray-900 transition">
                   Add to Cart
                 </button>
                 <button className="flex-1 border border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-100 transition">

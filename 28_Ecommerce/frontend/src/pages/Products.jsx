@@ -18,6 +18,7 @@ function Products() {
       })
       .then((data) => (
         setProducts(data),
+        console.log(data),
         setLoading(false)
       ))
       .catch(error => (
