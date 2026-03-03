@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import UpdateAPIView, CreateAPIView, ListAPIView, DestroyAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 class ListTasks(ListAPIView):
@@ -18,7 +19,7 @@ class ListTask(RetrieveAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return Tasks.objects.get(id=self.request.pk)
+        return Tasks.objects.filter(created_by=self.request.user)
 
 class CreateTask(CreateAPIView):
     serializer_class = TaskSerializer
@@ -32,5 +33,5 @@ class UpdateTask(UpdateAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return Tasks.objects.get(created_by = self.request.user) #wrong
+        return Tasks.objects.filter(created_by = self.request.user)
 
