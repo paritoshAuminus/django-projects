@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rx()!8%14xah(b(d_dkbnt!(71a2buz=k%82yshyy#pc*s7po7'
+SECRET_KEY = 'django-insecure-gow!s__bwuqp$ksoa!78f8m@am=_h&bfdsss7j5az!e)-d$p&w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -20,7 +20,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
-    'corsheaders'
+    'rest_framework_simplejwt',
+    'corsheaders',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -28,11 +29,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # local
     'accounts',
-    'blog',
-    'practice',
+    'consultancy',
+    'appointment',
+    'practice'
 ]
 
 MIDDLEWARE = [
@@ -117,18 +119,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# DRF PERMISSIONS CONFIG
+AUTH_USER_MODEL = 'accounts.User'
+
+# Rest framework configurations
 REST_FRAMEWORK = {
-    # Authentication = WHO the user is
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-
-    # Permissions = WHAT the user can do
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ),
+    )
 }
-
-# CUSTOM USER CONFIG
-AUTH_USER_MODEL = 'accounts.User'
