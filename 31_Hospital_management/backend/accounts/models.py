@@ -16,6 +16,9 @@ class HospitalMembership(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="hospital_membership")
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     role = models.CharField(max_length=3, choices=choices)
+
+    def __str__(self):
+        return f'{self.name} - {self.role}'
     
     class Meta:
         constraints = [
@@ -35,6 +38,9 @@ class DepartmentMembership(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="department_membership")
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.name} - {self.role}'
+    
     class Meta:
         constraints = [
             models.UniqueConstraint(

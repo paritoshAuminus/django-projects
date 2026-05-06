@@ -38,6 +38,18 @@ class HospitalMembership(models.Model):
 
 ## TODO
 
-- Ensure one person can be a part of multiple departments per hospital (all departments belogn to same hospital)
+- Ensure one person can be a part of multiple departments per hospital (all departments belong to same hospital)
 - Start filling up dummy data, create different hospitals and test
 - Restart migrations from the beginning
+
+# 06-05-26
+
+## Completed 
+
+- Created Patient model, this will keep patient entry record for a user per hospital
+- Added uuid to each patient because in case of emergency, walkin or manual creation of patient record by staff, there is no need for a user fk.
+
+## TODO
+
+- Ensure one person can be a part of multiple departments per hospital (all departments belong to the same hospital)
+- Create visit records (model)

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     # local
     'accounts',
     'hospital',
+    'patient',
 ]
 
 MIDDLEWARE = [
