@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Hospital model
 class Hospital(models.Model):
     title = models.CharField(max_length=400)
     description = models.TextField(null=True, blank=True)
@@ -8,6 +8,7 @@ class Hospital(models.Model):
     def __str__(self):
         return self.name
 
+# Department model - Hospital -> FK -> Departments
 class Department(models.Model):
     title = models.CharField(max_length=500)
     description = models.TextField(null=True, blank=True)

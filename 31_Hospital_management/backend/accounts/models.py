@@ -1,11 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser 
 from hospital.models import Hospital, Department
+from django.core.exceptions import ValidationError
 
+
+# User model
 class User(AbstractUser):
     def __str__(self):
         return self.username
     
+# HospitalMembership - User -> FK -> HospitalMembership + Hospital -> FK -> HospitalMembership
 class HospitalMembership(models.Model):
     choices = [
         ("CMO", "Chief Of Medical Staff"),
@@ -18,7 +22,7 @@ class HospitalMembership(models.Model):
     role = models.CharField(max_length=3, choices=choices)
 
     def __str__(self):
-        return f'{self.name} - {self.role}'
+        return f'{self.user.username} - {self.role}'
     
     class Meta:
         constraints = [

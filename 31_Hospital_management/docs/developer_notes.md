@@ -53,3 +53,15 @@ class HospitalMembership(models.Model):
 
 - Ensure one person can be a part of multiple departments per hospital (all departments belong to the same hospital)
 - Create visit records (model)
+
+# 07-05-26
+
+## Completed
+
+- Created visiting records model for the patient
+- Implemented `def clean()`
+
+## TODO
+
+- Study more on `def clean()` and other model constraints
+- Implement those constraints (`def clean()`) to department membership
