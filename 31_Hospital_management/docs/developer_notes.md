@@ -65,3 +65,21 @@ class HospitalMembership(models.Model):
 
 - Study more on `def clean()` and other model constraints
 - Implement those constraints (`def clean()`) to department membership
+
+# 10-05-26
+
+## Completed
+
+- Added `def clean()` to department membership
+- Checking whether the department belongs to the same hospital while decalaring department membership
+- Tested implementation of constraints in admin panel
+- Added User serializer (not studied it)
+- Added URLs for login and register with `TokenObtainPairView()` and `TokenRefreshView()`
+
+## TODO
+
+- Study more on serializer
+- Create serializer for all models
+- Create get user view for accounts app
+- Create tons of dummy data with factory boy
+- Test endpoints with locust

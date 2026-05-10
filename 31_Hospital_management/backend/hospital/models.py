@@ -6,7 +6,7 @@ class Hospital(models.Model):
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 
 # Department model - Hospital -> FK -> Departments
 class Department(models.Model):
@@ -15,4 +15,4 @@ class Department(models.Model):
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.name
+        return self.title
