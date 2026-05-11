@@ -83,3 +83,16 @@ class HospitalMembership(models.Model):
 - Create get user view for accounts app
 - Create tons of dummy data with factory boy
 - Test endpoints with locust
+
+# 11-05-26
+
+## Completed
+
+- Added account views (register, getuser, login, refresh)
+- Created urls for all the views
+- Testing for register in process
+
+## TODO
+
+- Just study, don't write code today
+- Study on serializers, django.contrib.auth (django authentication system)
